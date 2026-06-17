@@ -230,24 +230,29 @@ const slides = [
               <img class="float-in delay-2" src="images/Page8.png" alt="Kobifly web platform workflow" />
           </div>
         </div>
-        <div class="steps">
-          <article class="step-card animate-in" data-step="1">
+        <div class="steps animate-in delay-3">
+          <article class="step-card step-purple" data-step="1">
+            <span class="step-number">1</span>
             <h3>HIZLI KAYIT</h3>
             <p class="copy">Dakikalar içinde hesabını oluştur.</p>
           </article>
-          <article class="step-card animate-in delay-1" data-step="2">
+          <article class="step-card step-orange" data-step="2">
+            <span class="step-number">2</span>
             <h3>İHTİYACINI BELİRLE</h3>
             <p class="copy">Ne aradığını seç: POS, kredi, kart, sigorta, kampanya.</p>
           </article>
-          <article class="step-card animate-in delay-2" data-step="3">
+          <article class="step-card step-blue" data-step="3">
+            <span class="step-number">3</span>
             <h3>TEKLİFLERİ GÖR</h3>
             <p class="copy">Sana özel teklifleri tek ekranda incele.</p>
           </article>
-          <article class="step-card animate-in delay-3" data-step="4">
+          <article class="step-card step-orange" data-step="4">
+            <span class="step-number">4</span>
             <h3>TEK TIKLA BAŞVUR</h3>
             <p class="copy">En iyi seçeneğe anında başvur.</p>
           </article>
-          <article class="step-card animate-in delay-3" data-step="5">
+          <article class="step-card step-purple" data-step="5">
+            <span class="step-number">5</span>
             <h3>HEPSİNİ YÖNET</h3>
             <p class="copy">Tüm finansını tek panelden kontrol et.</p>
           </article>
