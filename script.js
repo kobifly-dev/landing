@@ -264,11 +264,13 @@ const slides = [
 
 const slideContent = document.querySelector("#slide-content");
 const requestedSlide = Number(new URLSearchParams(window.location.search).get("slide"));
+const autoAdvanceDelay = 15000;
 let currentIndex =
   Number.isInteger(requestedSlide) && requestedSlide >= 1 && requestedSlide <= slides.length
     ? requestedSlide - 1
     : 0;
 let pointerStartX = null;
+let autoAdvanceTimer = null;
 
 const updateSlide = () => {
   const slide = slides[currentIndex];
@@ -276,9 +278,23 @@ const updateSlide = () => {
   document.title = `${slide.title} | Kobifly`;
 };
 
-const goToSlide = (index) => {
+const scheduleAutoAdvance = () => {
+  window.clearTimeout(autoAdvanceTimer);
+
+  if (document.hidden) return;
+
+  autoAdvanceTimer = window.setTimeout(() => {
+    goToSlide(currentIndex + 1);
+  }, autoAdvanceDelay);
+};
+
+const goToSlide = (index, shouldSchedule = true) => {
   currentIndex = (index + slides.length) % slides.length;
   updateSlide();
+
+  if (shouldSchedule) {
+    scheduleAutoAdvance();
+  }
 };
 
 document.addEventListener("click", (event) => {
@@ -299,6 +315,10 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") goToSlide(currentIndex + 1);
 });
 
+document.addEventListener("visibilitychange", () => {
+  scheduleAutoAdvance();
+});
+
 slideContent.addEventListener("pointerdown", (event) => {
   pointerStartX = event.clientX;
 });
@@ -314,3 +334,4 @@ slideContent.addEventListener("pointerup", (event) => {
 });
 
 updateSlide();
+scheduleAutoAdvance();
